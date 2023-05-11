@@ -1,0 +1,71 @@
+.ImageUploader{
+    display: flex;
+    flex-direction: column;
+    padding : 10px;
+    justify-content: space-around;
+    margin: 10px;
+    width : 100%;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.05);
+    box-shadow : 0 25px 45px rgba(0,0,0,0.1);
+    border  : 1px solid rgba(255,255,255,0.5);
+    border-right  : 1px solid rgba(255,255,255,0.2);
+    border-bottom  : 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(5px);
+}
+.ImageUploader p{
+    padding : 5px;
+    text-align: center;
+    font-size: 15px;
+}
+.ImageUploader input{
+    padding : 7px;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.1);
+}
+.ImageUploader progress{
+    padding : 7px;
+    width : 100%;
+    border-radius: 10px;
+}
+.ImageUploader progress::-webkit-progress-value{
+    background-color: #fff;
+}
+
+.choosefile::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.choosefile::before {
+  content: 'Choose a file';
+  display: inline-block;
+  padding: 6px 12px;
+  margin : 0 0 0 10px;
+  cursor: pointer;
+  background-color: #000000;
+  color: #fff;
+  border-radius: 10px;
+}
+.choosefile:hover::before {
+  background-color: #fff;
+  color: black;
+}
+.upload{
+    width : 50%;
+    color: black;
+    background: black;
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.2);
+    border-radius : 35px;
+    border-right  : 1px solid rgba(255,255,255,0.2);
+    border-bottom  : 1px solid rgba(255,255,255,0.2);
+    border:1px solid rgb(250, 251, 252);
+    box-shadow: 0 0 5px #646668;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+.upload:hover{
+    background: rgba(255,255,255,0.4);
+}
