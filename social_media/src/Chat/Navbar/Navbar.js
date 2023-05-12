@@ -13,14 +13,14 @@ import { useUserAuth } from "../Login/UserAuthContext";
 const Navbar = () => {
 const { logOut, user } = useUserAuth();
   const navigate = useNavigate();
-  const handleMessage = async () =>{
-    try {
-        await logOut();
-        navigate("/gpt");
-      } catch (error) {
-        console.log(error.message);
-      }
-  }
+  const handleMessage =() =>{
+    //try {
+         navigate('/gpt');
+    // } catch (error) {
+    //     console.log(error.message);
+    // }
+}
+
   const handleLogout = async () => {
     try {
       await logOut();
@@ -34,7 +34,7 @@ const { logOut, user } = useUserAuth();
         setTimeout(()=>{
             console.log("hello");
         },2000);
-        navigate("/home");
+         navigate("/home");
     }
     catch(error){
         console.log(error.message);
@@ -61,15 +61,15 @@ const { logOut, user } = useUserAuth();
                     </li>
                     <li>
                         <BsMessenger size={25} onClick={handleMessage}></BsMessenger>
-                        <Link to="/home" className='links'>Messages</Link>
+                        <Link to="/gpt" className='links'>Messages</Link>
                     </li>
                     <li>
                         <FaUserTie size={25}></FaUserTie>
-                        <Link to="/home" className='links'>Ask Experts</Link>
+                        <Link to="/" className='links'>Ask Experts</Link>
                     </li>
                     <li onClick={handleLogout}>
                         <BiLogOut size={25}></BiLogOut>
-                        <Link to="/home" className='links'>Log Out</Link>
+                        <Link to="/" className='links'>Log Out</Link>
                     </li>
                 </ul>
             </div>

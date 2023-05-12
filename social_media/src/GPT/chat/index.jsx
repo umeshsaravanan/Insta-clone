@@ -8,11 +8,12 @@ import Header from "../customHeader";
 import StandardMessageForm from "../customMessageForms/StandardMessageForm.jsx";
 import Ai from "../customMessageForms/Ai.jsx";
 import AiCode from "../customMessageForms/AiCode.jsx";
+import '../chat/index.scss';
 
 
 const Chat = () => {
     const chatProps = useMultiChatLogic(
-        "87ed7c4b-30b7-42b2-8ff2-881b51682490",
+        "5043a5af-8d99-42f2-a6be-c2becf4c3dba",
         "testuser",
         "1234"
     )
