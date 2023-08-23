@@ -3,13 +3,12 @@ import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { getStorage } from 'firebase/storage';
 const firebaseConfig = {
-  apiKey: "AIzaSyCGw9q3Q16q5ko25REmWbArmV-Shxli2xs",
-  authDomain: "social-media-react-796e0.firebaseapp.com",
-  projectId: "social-media-react-796e0",
-  storageBucket: "social-media-react-796e0.appspot.com",
-  messagingSenderId: "191165954402",
-  appId: "1:191165954402:web:d0ffb4226d583a49c4943b",
-  measurementId: "G-LCBDQDV6P8"
+  apiKey: "AIzaSyB3NMwNAOJHL7XdLPToqNV5vgb87bdKuno",
+  authDomain: "social-media-2b46c.firebaseapp.com",
+  projectId: "social-media-2b46c",
+  storageBucket: "social-media-2b46c.appspot.com",
+  messagingSenderId: "339961018946",
+  appId: "1:339961018946:web:de64645edafb344e044bdb"
 };
 const firebaseApp = initializeApp(firebaseConfig);
 

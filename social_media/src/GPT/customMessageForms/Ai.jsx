@@ -27,6 +27,7 @@ const Ai = ({props,activeChat}) => {
       trigger(form);
       setMessage("");
       setAttachment("");  
+      // window.location.reload()
 };
   return (
     <MessageFormUI

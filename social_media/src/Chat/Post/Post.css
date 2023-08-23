@@ -1,95 +1,175 @@
-.post{
-    margin : 25px 30px;
-    width : 80%;
-    background: rgba(255,255,255,0.4);
-    border-radius : 25px;
-    border-right  : 1px solid rgba(255,255,255,0.2);
-    border-bottom  : 1px solid rgba(255,255,255,0.2);
+.post {
+    margin: 25px 30px;
+    width: 80%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 0 5px #646668;
+    position: relative;
 }
-.post_title .post_left .profile img{
+
+.post_title .post_left .profile img {
     width: 30px;
-    height :30px;
+    height: 30px;
     border-radius: 50%;
-    margin-right : 20px;
+    margin-right: 20px;
 }
-.post_title{
+
+.post_footer .post_left {
+    display: flex;
+    flex-direction: column;
+}
+
+.likescount {
+    font-size: 15px;
+}
+
+.post_title {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
 }
-.post_title .post_left{
+
+.post_title .post_left {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.post_title .post_left .name{
+
+.post_title .post_left .name {
     font-size: 13px;
 }
-.post .image{
+
+.dropdown ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown li {
+    padding: 10px;
+    cursor: pointer;
+}
+.dropdown li:hover {
+    background-color: #afbce6;
+    border-radius: 8px;
+}
+.dropdown {
+    position: absolute;
+    top: 2.5rem;
+    left: 75%;
+    min-width: 150px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    text-align: center;
+}
+
+.post .image {
     background-color: black;
 }
-.post .image img{
-    width : 100%;
-    height : 100%;
+
+.post .image img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    max-height : 700px;
+    max-height: 700px;
 }
-.post_footer .icons{
+
+.post_footer .icons {
     display: flex;
     justify-content: space-between;
-    padding : 10px;
-    font-size : 30px;
-    
+    padding: 10px;
+    font-size: 30px;
+
 }
-.post_footer .icons .post_left{
+
+.post_footer .icons .post_left {
     display: flex;
 }
-.comments i{
-    padding :10px 5px;
+
+.comments i {
+    padding: 10px 5px;
 }
-.comments i:hover,.save:hover{
-    cursor : pointer;
+
+.comments i:hover,
+.save:hover {
+    cursor: pointer;
 }
-.details{
+
+.details {
     display: flex;
     flex-direction: column;
     font-size: 15px;
 }
-.details div{
-    padding :5px 10px 5px 20px;
+
+.details div {
+    padding: 5px 10px 5px 20px;
 }
-.details .like{
+
+.details .like {
     display: flex;
-    padding : 10px 0px 10px 0;
+    padding: 10px 0px 10px 0;
     align-items: center;
 }
-.like_cont{
+
+.like_cont {
     padding-left: 0 !important;
 }
-.details .like .profile img{
+
+.details .like .profile img {
     width: 30px;
-    height :30px;
+    height: 30px;
     border-radius: 50%;
 }
-.mild{
+
+.profile {
+    margin-right: 1rem;
+}
+
+.mild {
     color: grey;
 }
-.write{
+
+.write {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding : 20px 20px;
+    padding: 20px 20px;
 }
-.left_side{
+
+.left_side {
     display: flex;
+    background: transparent;
 }
-.left_side input{
-    border : none;
+
+.left_side input {
+    border: none;
     outline: none;
     padding: 0 10px;
+    background: transparent;
 }
-.post_comments{
+
+.post_comments {
     padding: 10px 20px;
+}
+
+.post-btn {
+    color: black;
+    background: black;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 35px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgb(250, 251, 252);
+    box-shadow: 0 0 5px #646668;
+}
+
+.post-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
 }

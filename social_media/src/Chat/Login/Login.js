@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Form} from "react-bootstrap";
 import { Button } from "react-bootstrap";
@@ -6,20 +6,45 @@ import { useUserAuth } from "./UserAuthContext";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import { db} from "../../firebase";
+import { getDocs } from "firebase/firestore";
+import { collection} from "firebase/firestore";
 
 
-const Login = () => {
+
+const Login = (prp) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { logIn, googleSignIn } = useUserAuth();
   const navigate = useNavigate();
+  const [loginList,setloginList]=useState([]);
+  useEffect(() => {
+    const colRef = collection(db, "login");
+    const array = [];
+  
+    getDocs(colRef).then((snapshot) => {
+      snapshot.forEach((doc) => {
+        array.push({ id: doc.id, ...doc.data() });
+      });
+  
+      setloginList(array);
+    });
+  }, []);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
       await logIn(email, password);
+      if(loginList.length>0){
+        loginList.forEach((e)=>{
+          if(e.email===email){
+            prp.user(e.username)
+          }
+        })
+      }
       navigate("/home");
     } catch (err) {
       setError(err.message);

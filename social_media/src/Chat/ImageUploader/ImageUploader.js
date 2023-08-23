@@ -1,11 +1,11 @@
 import {useState} from 'react'
-import { db,storage } from '../../firebase';
+import { db } from '../../firebase';
 import { addDoc,collection,serverTimestamp } from 'firebase/firestore';
 import { getStorage, ref, uploadBytesResumable,getDownloadURL } from "firebase/storage";
 import Compressor from 'compressorjs';
 import './ImageUploader.css'
 
-const ImageUploader = () => {
+const ImageUploader = (prp) => {
     const[image,setImage]=useState(null);
     const[progress,setProgress]=useState(0);
     const[caption,setCaption]=useState('');
@@ -54,7 +54,9 @@ const ImageUploader = () => {
             timestamp: serverTimestamp(),
             comment: caption,
             ImageURL: url,
-            username: "Nitheesh",
+            Avatar : prp.profile,
+            username: prp.user,
+            likes : 0
           });
           setProgress(0);
           setCaption("");
@@ -70,8 +72,7 @@ const ImageUploader = () => {
             <p>Upload Your Memories here</p>
             <hr />
             <input type="file" onChange={handleChange} className='choosefile' />
-            <label for="choosefile" className='choosefile-label'></label>
-            <label htmlFor=""></label>
+            <label htmlFor="choosefile" className='choosefile-label'></label>
             <input type="text" placeholder="Add caption.." value={caption} onChange={event => setCaption(event.target.value)}/>
             <progress value={progress} max="100"/>
             <button onClick={handleUpload} disabled={uploading} className='upload'>{uploading ? 'Uploading...' : 'Upload'}</button>

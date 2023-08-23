@@ -13,19 +13,35 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
+  const [registerNo,setregisterNo]=useState("");
+  const [IsValid,setIsValid]=useState(false);
   const { signUp } = useUserAuth();
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const regex = /^(20[0-9]{5}|6177212[TL][0-9]{3})$/;
+    const isValidFormat = regex.test(registerNo);
+    setIsValid(isValidFormat);
     setError("");
+  
+    if (!isValidFormat) {
+      setError("Invalid register number format");
+      toast.error("Invalid register number format", {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+      return; 
+    }
+  
     try {
       await signUp(email, password);
       navigate("/");
-      const colRef=collection(db,"login");
-      addDoc(colRef,{
-        username : uname
-      })  
+      const colRef = collection(db, "login");
+      addDoc(colRef, {
+        username: uname,
+        email: email,
+        profileURL : ''
+      });
     } catch (err) {
       setError(err.message);
       toast.error(err.message, {
@@ -33,6 +49,7 @@ const Signup = () => {
       });
     }
   };
+  
 
   return (
     <>
@@ -55,6 +72,13 @@ const Signup = () => {
               onChange={(e) => setUname(e.target.value)}
             />
           </Form.Group>
+          <Form.Group className="input-out">
+            <Form.Control className="input-in"
+              type="text"
+              placeholder="Register Number "
+              onChange={(e) => setregisterNo(e.target.value)}
+            />
+          </Form.Group>
           <Form.Group className="input-out" controlId="formBasicEmail">
             <Form.Control className="input-in"
               type="email"
@@ -62,7 +86,6 @@ const Signup = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
-
           <Form.Group className="input-out" controlId="formBasicPassword">
             <Form.Control className="input-in"
               type="password"
