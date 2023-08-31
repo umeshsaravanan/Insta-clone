@@ -84,9 +84,6 @@ const Navbar = (prp) => {
       setDropdownVisible(!isDropdownVisible)
   }
   
-  const handleUpdateUsername = () => {
-
-  }
   return (
     <div className="navbar">
       <div className="nav-upper">
@@ -105,7 +102,6 @@ const Navbar = (prp) => {
               <ul>
                 <li onClick={handleSetProfile}>update Profile</li>
                 <li onClick={handleRemoveProfile}>Remove Profile</li>
-                <li onClick={handleUpdateUsername}>Update UserName</li>
               </ul>
             </div>
           )}

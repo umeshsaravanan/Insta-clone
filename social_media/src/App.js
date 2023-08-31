@@ -26,7 +26,7 @@ function App() {
     
     <UserAuthContextProvider>
       <Routes>
-      <Route path='/home' element={<ProtectedRoute><Chat user={username}/></ProtectedRoute>}/>
+      <Route path='/home/:user' element={<ProtectedRoute><Chat user={username}/></ProtectedRoute>}/>
         <Route path='/' element={<Login user={setUsername}></Login>} ></Route>
         <Route path='/signup' element={<SignUp></SignUp>} ></Route>
       </Routes>

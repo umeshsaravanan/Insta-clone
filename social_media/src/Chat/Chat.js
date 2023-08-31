@@ -4,10 +4,12 @@ import { useState , useEffect } from 'react'
 import { db } from '../firebase.js';
 import {collection,onSnapshot,query,orderBy } from 'firebase/firestore';
 import {BiSearchAlt} from 'react-icons/bi'
+import { useParams } from 'react-router-dom';
 
 
 const Chat = (prp) => {
     const [post,setPost]=useState([]);
+    const {user} = useParams();
 
     useEffect(() => {
       const postQuery = query(collection(db, 'post'), orderBy('timestamp', 'desc'));
@@ -33,7 +35,7 @@ const Chat = (prp) => {
           <div className="ct-box">   
             <div className="section">
             <div className="ap-left">
-               <Navbar user={prp.user}></Navbar>
+               <Navbar user={user}></Navbar>
             </div>
             <div className="ap-right" style={{width : '60%'}}>
               <div className="post-search">

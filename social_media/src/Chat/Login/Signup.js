@@ -7,6 +7,7 @@ import { db } from "../../firebase";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import { ClipLoader } from 'react-spinners';
 
 const Signup = () => {
   const [uname,setUname]=useState("");
@@ -15,11 +16,13 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [registerNo,setregisterNo]=useState("");
   const [IsValid,setIsValid]=useState(false);
+  const [loading, setLoading] = useState(false);
   const { signUp } = useUserAuth();
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const regex = /^(20[0-9]{5}|6177212[TL][0-9]{3})$/;
     const isValidFormat = regex.test(registerNo);
     setIsValid(isValidFormat);
@@ -30,6 +33,7 @@ const Signup = () => {
       toast.error("Invalid register number format", {
         position: toast.POSITION.BOTTOM_RIGHT
       });
+      setLoading(false)
       return; 
     }
   
@@ -42,9 +46,10 @@ const Signup = () => {
         email: email,
         profileURL : ''
       });
+      setLoading(false);
     } catch (err) {
       setError(err.message);
-      toast.error(err.message, {
+      toast.error(error, {
         position: toast.POSITION.BOTTOM_RIGHT
       });
     }
@@ -95,7 +100,7 @@ const Signup = () => {
           </Form.Group>
             <div className="lg-button">
             <button id="log_in" type="Submit">
-              Sign up
+              {loading ? <ClipLoader loading={loading} color="black" size={20}/> : "Sign Up"}
             </button>
             </div>
         </Form>

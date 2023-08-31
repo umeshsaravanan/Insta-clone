@@ -9,7 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import { db} from "../../firebase";
 import { getDocs } from "firebase/firestore";
 import { collection} from "firebase/firestore";
-
+import { ClipLoader } from 'react-spinners';
 
 
 const Login = (prp) => {
@@ -19,6 +19,8 @@ const Login = (prp) => {
   const { logIn, googleSignIn } = useUserAuth();
   const navigate = useNavigate();
   const [loginList,setloginList]=useState([]);
+  const [loading, setLoading] = useState(false);
+  let user = "";
   useEffect(() => {
     const colRef = collection(db, "login");
     const array = [];
@@ -35,6 +37,7 @@ const Login = (prp) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     setError("");
     try {
       await logIn(email, password);
@@ -42,10 +45,12 @@ const Login = (prp) => {
         loginList.forEach((e)=>{
           if(e.email===email){
             prp.user(e.username)
+            user = e.username
           }
         })
       }
-      navigate("/home");
+      navigate(`/home/${user}`);
+      setLoading(false);
     } catch (err) {
       setError(err.message);
       toast.error(err.message, {
@@ -84,7 +89,7 @@ const Login = (prp) => {
           </Form.Group>
           <div className="lg-button">
           <button id="log_in" type="Submit" onClick={handleSubmit}>
-              Log In
+              {loading ? <ClipLoader loading={loading} color="black" size={20}/> : "Log in"}
           </button>
           </div>
         </Form>
